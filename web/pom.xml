@@ -99,7 +99,9 @@
             </plugins>
         </pluginManagement>
 
-        <!--<finalName>web</finalName>-->
+        <!--de aici isi ia pathu la browser daca e specificat
+        ex: localhost:8080/web/ -->
+        <finalName>web</finalName>
 
     </build>
 </project>

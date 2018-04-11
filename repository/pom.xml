@@ -48,4 +48,8 @@
 
     </dependencies>
 
+    <build>
+        <finalName>repo</finalName>
+    </build>
+
 </project>

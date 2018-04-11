@@ -13,5 +13,8 @@
     <groupId>com.dealer</groupId>
     <artifactId>commons</artifactId>
 
+    <build>
+        <finalName>commons</finalName>
+    </build>
 
 </project>
