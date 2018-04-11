@@ -1,7 +1,10 @@
 package com.dealer.repository.beans;
 
+import com.dealer.commons.dto.User;
 import com.dealer.repository.util.SessionUtils;
+import com.dealer.services.inter.UserInterface;
 
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -12,36 +15,38 @@ import java.io.IOException;
 @ManagedBean(name = "loginBean", eager = true)
 @RequestScoped
 public class LoginBean {
-
-    private String userName;
+    private String username;
     private String password;
+    private User user;
+    @EJB
+    private UserInterface userService;
+
 
     public String validateUsernamePassword() throws IOException {
-        if (userName.trim().equals("root") && password.trim().equals("root")) {
-            HttpSession session = SessionUtils.getSession();
+        user= userService.checkUser(username);
+        if(user.getPassword().equals(password)){
+            HttpSession session=SessionUtils.getSession();
             return "admin";
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage
-                    (FacesMessage.SEVERITY_WARN, "Incorrect Username and Password", "Please enter correct username and Password "));
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Incorrect Username and Password","Please enter correct username and Password "));
             return "login";
-
         }
     }
 
-    public String login() {
+    public String login(){
         return "logout";
     }
 
-    public String logout() {
+    public String logout(){
         return "login";
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
