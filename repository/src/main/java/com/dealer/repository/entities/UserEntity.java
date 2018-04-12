@@ -9,9 +9,11 @@ import javax.persistence.*;
 })
 public class UserEntity {
 
+
+
     @Id
     @Column(name = "uid")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name")
@@ -19,6 +21,14 @@ public class UserEntity {
 
     @Column(name = "password")
     private String password;
+
+    public UserEntity() {
+    }
+
+    public UserEntity(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public int getId() {
         return id;

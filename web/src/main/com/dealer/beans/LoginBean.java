@@ -1,4 +1,4 @@
-package com.dealer.repository.beans;
+package main.com.dealer.beans;
 
 import com.dealer.commons.dto.User;
 import com.dealer.repository.entities.UserEntity;
@@ -35,7 +35,14 @@ public class LoginBean {
         }
     }
 
-    public String login(){
+    public String registerUserNamePassword() throws  IOException {
+        userService.registerUser(username, password);
+        HttpSession session = SessionUtils.getSession();
+        System.out.println("Registration successfully");
+        return "login";
+    }
+
+        public String login(){
         return "logout";
     }
 

@@ -1,11 +1,11 @@
 package com.dealer.repository.implementation;
 
 
-import com.dealer.commons.dto.User;
 import com.dealer.repository.entities.UserEntity;
 import com.dealer.repository.inter.UserRepositoryInterface;
 
 import javax.ejb.Stateless;
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,12 +16,18 @@ public class UserRepositoryImpl implements UserRepositoryInterface {
     private EntityManager em;
 
 
-    public User convert(UserEntity userEntity){
-        return new User(userEntity.getId(), userEntity.getUsername(), userEntity.getPassword());
-    }
-
     public UserEntity getUser(String username) {
         UserEntity userEntity = (UserEntity) em.createNamedQuery("UserEntity.getUsername").setParameter("name",username).getSingleResult();
         return userEntity;
+    }
+
+
+    //adding an user to the database
+    public UserEntity registerUser(String username, String password) {
+        UserEntity user = new UserEntity(username, password);
+        // UserEntity registerUser = convertToEntity(user);
+        em.persist(user);
+        em.flush();
+        return user;
     }
 }
