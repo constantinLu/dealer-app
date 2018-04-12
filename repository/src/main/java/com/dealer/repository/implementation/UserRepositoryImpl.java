@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class UserRepository implements UserRepositoryInterface {
+public class UserRepositoryImpl implements UserRepositoryInterface {
 
     @PersistenceContext(unitName = "myapp")
     private EntityManager em;
