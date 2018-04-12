@@ -1,8 +1,10 @@
 package com.dealer.repository.beans;
 
 import com.dealer.commons.dto.User;
+import com.dealer.repository.entities.UserEntity;
 import com.dealer.repository.util.SessionUtils;
-import com.dealer.services.inter.UserInterface;
+
+import com.dealer.services.inter.UserServiceInterface;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -17,13 +19,13 @@ import java.io.IOException;
 public class LoginBean {
     private String username;
     private String password;
-    private User user;
+    private UserEntity user;
     @EJB
-    private UserInterface userService;
+    private UserServiceInterface userService;
 
 
     public String validateUsernamePassword() throws IOException {
-        user= userService.checkUser(username);
+        user = userService.checkUser(username);
         if(user.getPassword().equals(password)){
             HttpSession session=SessionUtils.getSession();
             return "admin";

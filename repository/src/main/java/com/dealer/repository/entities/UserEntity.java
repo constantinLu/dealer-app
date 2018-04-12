@@ -3,17 +3,18 @@ package com.dealer.repository.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @NamedQueries({
-        @NamedQuery(name="UsersEntity.getUsername",query="select u from UserEntity u where u.username=:name")
+        @NamedQuery(name="UserEntity.getUsername",query="select u from UserEntity u where u.username=:name")
 })
 public class UserEntity {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "uid")
+    @GeneratedValue
     private int id;
 
-    @Column(name = "username")
+    @Column(name = "name")
     private String username;
 
     @Column(name = "password")
