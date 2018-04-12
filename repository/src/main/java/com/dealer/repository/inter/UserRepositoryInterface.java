@@ -8,4 +8,5 @@ import javax.ejb.Local;
 @Local
 public interface UserRepositoryInterface {
     public UserEntity getUser(String username);
+    public User convert(UserEntity userEntity);
 }

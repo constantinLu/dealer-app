@@ -7,5 +7,5 @@ import javax.ejb.Local;
 
 @Local
 public interface UserServiceInterface {
-    public UserEntity checkUser(String username);
+    public User checkUser(String username);
 }

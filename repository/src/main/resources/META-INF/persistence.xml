@@ -14,8 +14,7 @@
             <property name="openjpa.DataCache" value="true" />
             <property name="openjpa.Log"
                       value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.show_sql" value="true" />
+
         </properties>
     </persistence-unit>
 </persistence>

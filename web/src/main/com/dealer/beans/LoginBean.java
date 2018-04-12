@@ -19,7 +19,7 @@ import java.io.IOException;
 public class LoginBean {
     private String username;
     private String password;
-    private UserEntity user;
+    private User user;
     @EJB
     private UserServiceInterface userService;
 
