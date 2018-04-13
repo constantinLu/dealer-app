@@ -26,28 +26,32 @@ public class LoginBean {
 
     public String validateUsernamePassword() throws IOException {
         user = userService.checkUser(username);
-        if(user.getPassword().equals(password)){
-            HttpSession session=SessionUtils.getSession();
-            return "admin";
+        if (user.getPassword().equals(password)) {
+            HttpSession session = SessionUtils.getSession();
+            return "redirect";
         } else {
-            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Incorrect Username and Password","Please enter correct username and Password "));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username and Password", "Please enter correct username and Password "));
             return "login";
         }
     }
 
-    public String registerUserNamePassword() throws  IOException {
+    public String registerUserNamePassword() throws IOException {
         userService.registerUser(username, password);
         HttpSession session = SessionUtils.getSession();
         System.out.println("Registration successfully");
-        return "login";
+        return "redirect";
     }
 
-        public String login(){
+    public String login() {
         return "logout";
     }
 
-    public String logout(){
+    public String logout() {
         return "login";
+    }
+
+    public String addVehicle() {
+        return "vehicleRegistration";
     }
 
     public String getUsername() {

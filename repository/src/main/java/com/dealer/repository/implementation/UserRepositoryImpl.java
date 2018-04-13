@@ -17,7 +17,7 @@ public class UserRepositoryImpl implements UserRepositoryInterface {
 
 
     public UserEntity getUser(String username) {
-        UserEntity userEntity = (UserEntity) em.createNamedQuery("UserEntity.getUsername").setParameter("name",username).getSingleResult();
+        UserEntity userEntity = (UserEntity) em  .createNamedQuery("UserEntity.getUsername").setParameter("name",username).getSingleResult();
         return userEntity;
     }
 
