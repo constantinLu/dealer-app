@@ -15,12 +15,9 @@ public class UserRepositoryImpl implements UserRepositoryInterface {
     @PersistenceContext(unitName = "myapp")
     private EntityManager em;
 
-
     public UserEntity getUser(String username) {
-        UserEntity userEntity = (UserEntity) em  .createNamedQuery("UserEntity.getUsername").setParameter("name",username).getSingleResult();
-        return userEntity;
+        return (UserEntity) em.createNamedQuery("UserEntity.getUsername").setParameter("name",username).getSingleResult();
     }
-
 
     //adding an user to the database
     public UserEntity registerUser(String username, String password) {

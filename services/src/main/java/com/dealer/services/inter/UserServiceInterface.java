@@ -7,6 +7,6 @@ import javax.ejb.Local;
 
 @Local
 public interface UserServiceInterface {
-    public User checkUser(String username);
-    public User registerUser(String username, String password);
+     User checkUser(String username);
+     User registerUser(String username, String password);
 }

@@ -50,9 +50,7 @@ public class LoginBean {
         return "login";
     }
 
-    public String addVehicle() {
-        return "vehicleRegistration";
-    }
+
 
     public String getUsername() {
         return username;

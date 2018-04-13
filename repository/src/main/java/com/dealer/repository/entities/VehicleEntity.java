@@ -12,21 +12,6 @@ import java.util.Date;
 @Table(name="vehicle")
 public class VehicleEntity {
 
-    public VehicleEntity() {
-    }
-
-    public VehicleEntity(String model, String brand, Color color, double price, Condition condition, Date registrationDate, int userId) {
-        this.model = model;
-        this.brand = brand;
-        this.color = color;
-        this.price = price;
-        this.condition = condition;
-        this.registrationDate = registrationDate;
-        this.userId = userId;
-    }
-
-
-
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int vid;
@@ -37,25 +22,38 @@ public class VehicleEntity {
     @Column(name="brand")
     private String brand;
 
-    @Enumerated(EnumType.STRING)
+    // enum
     @Column(name="color")
     private Color color;
 
     @Column(name="price")
     private double price;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name="condition")
-    private Condition condition;
+    // enum
+    @Column(name="\"condition\"")
+    private String condition;
 
     @Temporal(TemporalType.DATE)
     @Column(name="registration_date")
     private Date registrationDate;
 
+    // mapezi rel pe entitati
     @Column(name="user_id")
     private int userId;
 
 
+    public VehicleEntity() {
+    }
+
+    public VehicleEntity(String model, String brand, Color color, double price, String condition, int userId) {
+        this.model = model;
+        this.brand = brand;
+        this.color = color;
+        this.price = price;
+        this.condition = condition;
+        this.registrationDate = new Date();
+        this.userId = userId;
+    }
 
 
     public int getVid() {
@@ -98,20 +96,12 @@ public class VehicleEntity {
         this.price = price;
     }
 
-    public Condition getCondition() {
+    public String getCondition() {
         return condition;
     }
 
-    public void setCondition(Condition condition) {
+    public void setCondition(String condition) {
         this.condition = condition;
-    }
-
-    public Date getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
     }
 
     public int getUserId() {

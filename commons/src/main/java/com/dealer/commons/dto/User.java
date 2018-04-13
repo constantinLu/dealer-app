@@ -15,7 +15,6 @@ public class User implements Serializable {
     }
 
 
-
     public int getId() {
         return id;
     }
