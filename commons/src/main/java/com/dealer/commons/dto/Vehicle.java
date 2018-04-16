@@ -19,7 +19,7 @@ public class Vehicle {
 
     private double price;
 
-    private String condition;
+    private Condition condition;
 
 
     private Date registrationDate;
@@ -32,7 +32,7 @@ public class Vehicle {
     }
 
 
-    public Vehicle(String model, String brand, Color color, double price, String condition, int userId) {
+    public Vehicle(String model, String brand, Color color, double price, Condition condition, int userId) {
         this.model = model;
         this.brand = brand;
         this.color = color;
@@ -84,11 +84,11 @@ public class Vehicle {
         this.color = color;
     }
 
-    public String getCondition() {
+    public Condition getCondition() {
         return condition;
     }
 
-    public void setCondition(String condition) {
+    public void setCondition(Condition condition) {
         this.condition = condition;
     }
 

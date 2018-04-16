@@ -15,8 +15,7 @@ public class EntityToDto {
 
     public static Vehicle convert(VehicleEntity vehicleEntity) {
         return new Vehicle(vehicleEntity.getModel(), vehicleEntity.getBrand(),
-                vehicleEntity.getColor(), vehicleEntity.getPrice(), vehicleEntity.getCondition(),
-                vehicleEntity.getUserId());
+                vehicleEntity.getColor(), vehicleEntity.getPrice(), vehicleEntity.getCondition(), vehicleEntity.getUserId());
     }
 
 

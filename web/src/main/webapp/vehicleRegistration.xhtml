@@ -6,71 +6,76 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
       xmlns:s="http://java.sun.com/jsf/composite">
->
 
 <h:head>
     <title>AutoDeal</title>
 </h:head>
-<h:body>
-    <h:form>
+<h:body>http://devdocs.io/
+    <h:form style="text-align: justify-all">
+
         <p:panel header="Car registration">
             <p:messages autoUpdate="true"/>
-            <h3>Please register a car</h3>
-            <h:panelGrid id="grid" columns="4" cellpadding="5">
+            <h3>Please register a car:</h3>
+            <!--<h:panelGrid id="grid" columns="2" cellpadding="4" columnClasses="alignmentLeft" width="200">-->
 
-                <p:outputLabel for="model" value="Model:"/>
-                <p:inputText id="model" value="#{vehicleBean.model}"/>
-                <p:message for="model"/>
-                <br/><br/>
+            <p:outputLabel for="model" value="Model:"/>
+            <p:inputText id="model" value="#{vehicleBean.model}"/>
+            <p:message for="model"/>
+            <br/><br/>
 
-                <p:outputLabel for="brand" value="Brand:"/>
-                <p:inputText id="brand" value="#{vehicleBean.brand}"/>
-                <p:message for="brand"/>
-                <br/><br/>
+            <p:outputLabel for="brand" value="Brand:"/>
+            <p:inputText id="brand" value="#{vehicleBean.brand}"/>
+            <p:message for="brand"/>
+            <br/><br/>
 
-                <!--<p:outputLabel for="color" value="Color:"/>
-                <p:inputText id="color" dropdown="true" value = "#{vehicleBean.color}"/>
-                <p:message for="color"/>
-                <br/><br/>-->
+            <p:outputLabel for="color" value="Color:"/>
+            <p:selectOneMenu id="color" value="#{vehicleBean.color}">
+            <f:selectItem itemLabel="RED" itemValue="RED"/>
+            <f:selectItem itemLabel="WHITE" itemValue="WHITE"/>
+            <f:selectItem itemLabel="GREEN" itemValue="GREEN"/>
+            <f:selectItem itemLabel="YELLOW" itemValue="YELLOW"/>
+            <f:selectItem itemLabel="BLACK" itemValue="BLACK"/>
+            <f:selectItem itemLabel="BLUE" itemValue="BLUE"/>
+            <f:selectItem itemLabel="ORANGE" itemValue="ORANGE"/>
+            <f:selectItem itemLabel="PURPLE" itemValue="PURPLE"/>
+            <f:selectItem itemLabel="TURQUOISE" itemValue="TURQUOISE"/>
+            </p:selectOneMenu>
+            <br/><br/>
 
-                <!--<h:selectOneMenu value="#{criteria.name}" id="color">-->
-                    <!--<f:selectItems var="color"-->
-                                   <!--value="#{nameManager.getNames()}"-->
-                                   <!--label="#{messages[nameManager.getKey(name)]}"-->
-                                   <!--hideNoSelectionLabel="true"/>-->
-                    <!--<ui:convertEnum/>-->
-                <!--</h:selectOneMenu>-->
+            <!--&lt;!&ndash;  ENUM constants in a combox box in EL&ndash;&gt;-->
+            <!--<h:selectOneMenu value="#{vehicleBean.color}">-->
+            <!--<f:selectItems value="#{vehicleBean.color}"/>-->
+            <!--</h:selectOneMenu>-->
 
-                <p:outputLabel for="color" value="color" />
-                <h:selectOneMenu id="color" value="#{vehicleBean.color}" >
-                    <f:selectItem itemLabel="1" />
-                    <f:selectItem itemLabel="2"  />
-                    <f:selectItem itemLabel="3" />
-                </h:selectOneMenu>
-                <hr />
-                <br/><br/>
+            <!--<p:importEnum type="com.dealer.repository.utils.Color" var="Color"/>-->
+            <!--<ui:repeat var="current" value="#{Color.values}"> <h:outputText value="#{current}"/>-->
+            <!--</ui:repeat>-->
 
 
+            <p:outputLabel for="price" value="Price:"/>
+            <p:inputText id="price" value="#{vehicleBean.price}"/>
+            <p:message for="price"/>
+            <br/><br/>
 
-                <p:outputLabel for="price" value="Price:"/>
-                <p:inputText id="price" value="#{vehicleBean.price}"/>
-                <p:message for="price"/>
-                <br/><br/>
 
-                <p:outputLabel for="condition" value="Condition:"/>
-                <p:inputText id="condition" value="#{vehicleBean.condition}"/>
-                <p:message for="condition"/>
-                <br/><br/>
+            <p:outputLabel for="condition" value="Condition:"/>
+            <!--<p:inputText id="condition" value="#{vehicleBean.condition}"/>-->
+            <p:selectOneMenu id="condition" value="#{vehicleBean.condition}">
+                <f:selectItem itemLabel="NEW" itemValue="NEW"/>
+                <f:selectItem itemLabel="USED" itemValue="USED"/>
+            </p:selectOneMenu>
+            <br/><br/>
 
-                <p:outputLabel for="userId" value="UserID:"/>
-                <p:inputText id="userId" value="#{vehicleBean.userId}"/>
-                <p:message for="userId"/>
-                <br/><br/>
 
-            </h:panelGrid>
-            <p:commandButton value="Validate" update="grid" icon="ui-icon-check" action="#{vehicleBean.registerVehicle}"
+            <p:outputLabel for="userId" value="UserID:"/>
+            <p:inputText id="userId" value="#{vehicleBean.userId}"/>
+            <p:message for="userId"/>
+            <br/><br/>
+
+            <!--&lt;!&ndash;&ndash;&gt;</h:panelGrid>-->
+            <p:commandButton value="Validate" icon="ui-icon-check" action="#{vehicleBean.registerVehicle}"
                              validateClient="true" style="margin-right:10px"/>
-            <p:commandButton value="Back" update="grid" icon="ui-icon-core" action="home.xhtml" validateClient="true"
+            <p:commandButton value="Back" icon="ui-icon-core" action="home.xhtml" validateClient="true"
                              style="margin-left: 10px"/>
         </p:panel>
     </h:form>

@@ -23,6 +23,7 @@ public class VehicleEntity {
     private String brand;
 
     // enum
+    @Enumerated(EnumType.STRING)
     @Column(name="color")
     private Color color;
 
@@ -30,22 +31,31 @@ public class VehicleEntity {
     private double price;
 
     // enum
+    @Enumerated(EnumType.STRING)
     @Column(name="\"condition\"")
-    private String condition;
+    private Condition condition;
 
     @Temporal(TemporalType.DATE)
     @Column(name="registration_date")
     private Date registrationDate;
 
-    // mapezi rel pe entitati
-    @Column(name="user_id")
+//    // mapezi rel pe entitati
+//    @Column(name="user_id")
+//    private int userId;
+
+
     private int userId;
+
+//    @ManyToOne
+//    @JoinColumn(name = "user_fk")
+//    private UserEntity user;
+
 
 
     public VehicleEntity() {
     }
 
-    public VehicleEntity(String model, String brand, Color color, double price, String condition, int userId) {
+    public VehicleEntity(String model, String brand, Color color, double price, Condition condition, int userId) {
         this.model = model;
         this.brand = brand;
         this.color = color;
@@ -54,6 +64,8 @@ public class VehicleEntity {
         this.registrationDate = new Date();
         this.userId = userId;
     }
+
+
 
 
     public int getVid() {
@@ -96,11 +108,11 @@ public class VehicleEntity {
         this.price = price;
     }
 
-    public String getCondition() {
+    public Condition getCondition() {
         return condition;
     }
 
-    public void setCondition(String condition) {
+    public void setCondition(Condition condition) {
         this.condition = condition;
     }
 

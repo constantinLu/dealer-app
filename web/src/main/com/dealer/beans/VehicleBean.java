@@ -3,16 +3,21 @@ package main.com.dealer.beans;
 
 import com.dealer.commons.dto.User;
 import com.dealer.commons.dto.Vehicle;
+import com.dealer.repository.entities.UserEntity;
+import com.dealer.repository.entities.VehicleEntity;
 import com.dealer.repository.inter.VehicleRepositoryInterface;
 import com.dealer.repository.utils.Color;
+import com.dealer.repository.utils.Condition;
 
 import javax.ejb.EJB;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import java.util.Date;
+import java.io.IOException;
+import java.util.*;
 
-@ManagedBean(name ="vehicleBean", eager = true)
-@RequestScoped
+@ManagedBean(name = "vehicleBean", eager = true)
+@ApplicationScoped
 public class VehicleBean {
 
 
@@ -20,22 +25,20 @@ public class VehicleBean {
     private String brand;
     private Color color;
     private double price;
-    private String condition;
+    private Condition condition;
     private Date registrationDate;
     private int userId;
-
     private Vehicle vehicle;
+
 
     @EJB
     private VehicleRepositoryInterface vehicleRepositoryInterface;
 
 
+    public  List<Color> colorList() {
+        return new ArrayList<Color>(EnumSet.allOf(Color.class));
+        }
 
-    public void vaildateVehicle() {
-        System.out.println("Still working on it");
-        System.out.println("Vehicle ADDDED");
-
-    }
 
     public String registerVehicle() {
         Vehicle vehicle = new Vehicle(model, brand, color, price, condition, userId);
@@ -82,11 +85,11 @@ public class VehicleBean {
         this.price = price;
     }
 
-    public String getCondition() {
+    public Condition getCondition() {
         return condition;
     }
 
-    public void setCondition(String condition) {
+    public void setCondition(Condition condition) {
         this.condition = condition;
     }
 
@@ -121,4 +124,11 @@ public class VehicleBean {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public static void main(String[] args) {
+        VehicleBean v = new VehicleBean();
+
+    }
 }
+
+
