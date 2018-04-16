@@ -16,7 +16,6 @@
         <p:panel header="Car registration">
             <p:messages autoUpdate="true"/>
             <h3>Please register a car:</h3>
-            <!--<h:panelGrid id="grid" columns="2" cellpadding="4" columnClasses="alignmentLeft" width="200">-->
 
             <p:outputLabel for="model" value="Model:"/>
             <p:inputText id="model" value="#{vehicleBean.model}"/>
@@ -34,21 +33,10 @@
             </p:selectOneMenu>
             <br/><br/>
 
-            <!--&lt;!&ndash;  ENUM constants in a combox box in EL&ndash;&gt;-->
-            <!--<h:selectOneMenu value="#{vehicleBean.color}">-->
-            <!--<f:selectItems value="#{vehicleBean.color}"/>-->
-            <!--</h:selectOneMenu>-->
-
-            <!--<p:importEnum type="com.dealer.repository.utils.Color" var="Color"/>-->
-            <!--<ui:repeat var="current" value="#{Color.values}"> <h:outputText value="#{current}"/>-->
-            <!--</ui:repeat>-->
-
-
             <p:outputLabel for="price" value="Price:"/>
             <p:inputText id="price" value="#{vehicleBean.price}"/>
             <p:message for="price"/>
             <br/><br/>
-
 
             <p:outputLabel for="condition" value="Condition:"/>
             <p:selectOneMenu id="condition" value="#{vehicleBean.condition}">
@@ -56,13 +44,6 @@
             </p:selectOneMenu>
             <br/><br/>
 
-
-            <!--<p:outputLabel for="userId" value="UserID:"/>-->
-            <!--<p:inputText id="userId" value="#{vehicleBean.userId}"/>-->
-            <!--<p:message for="userId"/>-->
-            <!--<br/><br/>-->
-
-            <!--&lt;!&ndash;&ndash;&gt;</h:panelGrid>-->
             <p:commandButton value="Validate" icon="ui-icon-check" action="#{vehicleBean.registerVehicle}"
                              validateClient="true" style="margin-right:10px"/>
             <p:commandButton value="Back" icon="ui-icon-core" action="home.xhtml" validateClient="true"

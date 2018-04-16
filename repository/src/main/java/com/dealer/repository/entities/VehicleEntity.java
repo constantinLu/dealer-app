@@ -5,9 +5,13 @@ import com.dealer.repository.utils.Color;
 import com.dealer.repository.utils.Condition;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 
+@XmlRootElement
 @Entity
 @Table(name="vehicle")
 public class VehicleEntity {
@@ -43,13 +47,6 @@ public class VehicleEntity {
     private int userId;
 
 
-
-//    @ManyToOne
-////    @JoinColumn(name = "user_fk")
-////    private UserEntity user;
-
-
-
     public VehicleEntity() {
     }
 
@@ -63,9 +60,7 @@ public class VehicleEntity {
         this.userId = userId;
     }
 
-
-
-
+    @XmlAttribute
     public int getVid() {
         return vid;
     }
@@ -74,6 +69,7 @@ public class VehicleEntity {
         this.vid = vid;
     }
 
+    @XmlElement
     public String getModel() {
         return model;
     }
@@ -82,6 +78,7 @@ public class VehicleEntity {
         this.model = model;
     }
 
+    @XmlElement
     public String getBrand() {
         return brand;
     }
@@ -90,6 +87,7 @@ public class VehicleEntity {
         this.brand = brand;
     }
 
+    @XmlElement
     public Color getColor() {
         return color;
     }
@@ -98,6 +96,7 @@ public class VehicleEntity {
         this.color = color;
     }
 
+    @XmlElement
     public double getPrice() {
         return price;
     }
@@ -106,6 +105,7 @@ public class VehicleEntity {
         this.price = price;
     }
 
+    @XmlElement
     public Condition getCondition() {
         return condition;
     }
@@ -114,6 +114,7 @@ public class VehicleEntity {
         this.condition = condition;
     }
 
+    @XmlElement
     public int getUserId() {
         return userId;
     }
