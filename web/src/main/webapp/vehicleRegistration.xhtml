@@ -30,15 +30,7 @@
 
             <p:outputLabel for="color" value="Color:"/>
             <p:selectOneMenu id="color" value="#{vehicleBean.color}">
-            <f:selectItem itemLabel="RED" itemValue="RED"/>
-            <f:selectItem itemLabel="WHITE" itemValue="WHITE"/>
-            <f:selectItem itemLabel="GREEN" itemValue="GREEN"/>
-            <f:selectItem itemLabel="YELLOW" itemValue="YELLOW"/>
-            <f:selectItem itemLabel="BLACK" itemValue="BLACK"/>
-            <f:selectItem itemLabel="BLUE" itemValue="BLUE"/>
-            <f:selectItem itemLabel="ORANGE" itemValue="ORANGE"/>
-            <f:selectItem itemLabel="PURPLE" itemValue="PURPLE"/>
-            <f:selectItem itemLabel="TURQUOISE" itemValue="TURQUOISE"/>
+                <f:selectItems value="#{vehicleBean.colorList}" />
             </p:selectOneMenu>
             <br/><br/>
 
@@ -59,18 +51,16 @@
 
 
             <p:outputLabel for="condition" value="Condition:"/>
-            <!--<p:inputText id="condition" value="#{vehicleBean.condition}"/>-->
             <p:selectOneMenu id="condition" value="#{vehicleBean.condition}">
-                <f:selectItem itemLabel="NEW" itemValue="NEW"/>
-                <f:selectItem itemLabel="USED" itemValue="USED"/>
+                <f:selectItems value="#{vehicleBean.conditionList}" />
             </p:selectOneMenu>
             <br/><br/>
 
 
-            <p:outputLabel for="userId" value="UserID:"/>
-            <p:inputText id="userId" value="#{vehicleBean.userId}"/>
-            <p:message for="userId"/>
-            <br/><br/>
+            <!--<p:outputLabel for="userId" value="UserID:"/>-->
+            <!--<p:inputText id="userId" value="#{vehicleBean.userId}"/>-->
+            <!--<p:message for="userId"/>-->
+            <!--<br/><br/>-->
 
             <!--&lt;!&ndash;&ndash;&gt;</h:panelGrid>-->
             <p:commandButton value="Validate" icon="ui-icon-check" action="#{vehicleBean.registerVehicle}"

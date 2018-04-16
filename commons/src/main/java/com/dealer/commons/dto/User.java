@@ -7,13 +7,20 @@ public class User implements Serializable {
     private int id;
     private String username;
     private String password;
+    private Vehicle vehicle;
 
     public User(String username, String password) {
-        this.id = id;
         this.username = username;
         this.password = password;
     }
 
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 
     public int getId() {
         return id;

@@ -7,10 +7,11 @@ import com.dealer.repository.entities.VehicleEntity;
 
 public class EntityToDto {
 
-    //EntityToDTO
     public static User convert(UserEntity userEntity){
-        // set the id also
-        return new User(userEntity.getUsername(), userEntity.getPassword());
+        User user = new User(userEntity.getUsername(), userEntity.getPassword());
+        user.setId(userEntity.getId());
+
+        return user;
     }
 
     public static Vehicle convert(VehicleEntity vehicleEntity) {

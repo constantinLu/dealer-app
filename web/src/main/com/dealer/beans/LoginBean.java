@@ -1,8 +1,7 @@
 package main.com.dealer.beans;
 
 import com.dealer.commons.dto.User;
-import com.dealer.repository.entities.UserEntity;
-import com.dealer.repository.util.SessionUtils;
+import main.com.dealer.util.SessionUtils;
 
 import com.dealer.services.inter.UserServiceInterface;
 
@@ -20,6 +19,7 @@ public class LoginBean {
     private String username;
     private String password;
     private User user;
+
     @EJB
     private UserServiceInterface userService;
 
@@ -28,6 +28,8 @@ public class LoginBean {
         user = userService.checkUser(username);
         if (user.getPassword().equals(password)) {
             HttpSession session = SessionUtils.getSession();
+            SessionUtils.setUserId(String.valueOf(user.getId()));
+
             return "redirect";
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username and Password", "Please enter correct username and Password "));

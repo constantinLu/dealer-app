@@ -12,4 +12,6 @@ import java.util.Date;
 public interface VehicleRepositoryInterface {
 
     VehicleEntity registerVehicle(String model, String brand, Color color, double price, Condition condition, int userId);
+
+    VehicleEntity registerVehicle(VehicleEntity vehicleEntity);
 }

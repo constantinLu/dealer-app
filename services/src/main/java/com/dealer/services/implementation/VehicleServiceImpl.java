@@ -12,6 +12,7 @@ import com.dealer.repository.utils.Color;
 import com.dealer.repository.utils.Condition;
 import com.dealer.services.inter.VehicleServiceInterface;
 
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.Date;
@@ -22,14 +23,19 @@ public class VehicleServiceImpl implements VehicleServiceInterface {
     @EJB
     private VehicleRepositoryInterface vehicleRepositoryInterface;
 
-
-    //converting to DTO
     public Vehicle registerVehicle(String model, String brand, Color color, double price, Condition condition, int userId) {
         // primesti un vehicle dto ca param
         //conert to entity
         //trimit entitatea ca param
         //DtoToEntity.convertToEntity(vehicle);
         VehicleEntity vehicleEntity = vehicleRepositoryInterface.registerVehicle(model, brand, color, price, condition, userId);
+        return EntityToDto.convert(vehicleEntity);
+    }
+
+    public Vehicle registerVehicle(Vehicle vehicleDto) {
+        VehicleEntity vehicleEntity = DtoToEntity.convertToEntity(vehicleDto);
+        vehicleEntity = vehicleRepositoryInterface.registerVehicle(vehicleEntity);
+
         return EntityToDto.convert(vehicleEntity);
     }
 

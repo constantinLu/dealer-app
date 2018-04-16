@@ -16,12 +16,18 @@ public class VehicleRepositoryImpl implements VehicleRepositoryInterface {
     @PersistenceContext(unitName = "myapp")
     private EntityManager em;
 
-
-    //adding vehicle to database
     public VehicleEntity registerVehicle(String model, String brand, Color color, double price, Condition condition, int userId) {
         VehicleEntity vehicleEntity = new VehicleEntity(model, brand, color, price, condition, userId);
         em.persist(vehicleEntity);
         em.flush();
+
+        return vehicleEntity;
+    }
+
+    public VehicleEntity registerVehicle(VehicleEntity vehicleEntity) {
+        em.persist(vehicleEntity);
+        em.flush();
+
         return vehicleEntity;
     }
 }

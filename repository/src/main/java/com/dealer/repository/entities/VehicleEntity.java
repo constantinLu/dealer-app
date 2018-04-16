@@ -39,16 +39,14 @@ public class VehicleEntity {
     @Column(name="registration_date")
     private Date registrationDate;
 
-//    // mapezi rel pe entitati
-//    @Column(name="user_id")
-//    private int userId;
-
-
+    @Column(name ="user_id")
     private int userId;
 
+
+
 //    @ManyToOne
-//    @JoinColumn(name = "user_fk")
-//    private UserEntity user;
+////    @JoinColumn(name = "user_fk")
+////    private UserEntity user;
 
 
 
