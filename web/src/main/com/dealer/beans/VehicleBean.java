@@ -8,13 +8,13 @@ import com.dealer.services.inter.VehicleServiceInterface;
 import main.com.dealer.util.SessionUtils;
 
 import javax.ejb.EJB;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import java.io.IOException;
 import java.util.*;
 
 @ManagedBean(name = "vehicleBean", eager = true)
-@ApplicationScoped
+@RequestScoped
 public class VehicleBean {
 
 
@@ -94,14 +94,6 @@ public class VehicleBean {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
-    }
-
-    public Date getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
     }
 
     public int getUserId() {

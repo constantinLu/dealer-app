@@ -8,16 +8,25 @@
 
 <h:head>
     <title>Authendication is successfull!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 </h:head>
 <h:body>
     <h:form>
-        <p:panel header="WELCOME TO AUTODEALERS!!!!!">
+        <p:panel header="WELCOME TO AUTODEALERS">
             <p>Welcome #{loginBean.username}</p>
             <h:commandLink action="#{loginBean.logout}" value="Logout"></h:commandLink>
             <br/><br/>
             <h:commandLink action="#{vehicleBean.addVehicle}" value="Register Car"></h:commandLink>
+
+            <p:growl id="messages" showDetail="true"/>
+
+            <p:fileUpload value="#{uploadBean.file}" mode="simple" skinSimple="true"/>
+
+            <p:commandButton value="Submit" ajax="false" actionListener="#{uploadBean.upload}" disabled="true"/>
         </p:panel>
     </h:form>
+
 </h:body>
 
 </html>
+

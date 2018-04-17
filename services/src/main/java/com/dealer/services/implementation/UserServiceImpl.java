@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserServiceInterface {
     //converting to userDTO
     public User checkUser(String username) {
         UserEntity  tempUser = userRepository.getUser(username);
-
         return EntityToDto.convert(tempUser);
     }
 

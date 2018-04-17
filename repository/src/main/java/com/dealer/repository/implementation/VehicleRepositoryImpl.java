@@ -20,14 +20,13 @@ public class VehicleRepositoryImpl implements VehicleRepositoryInterface {
         VehicleEntity vehicleEntity = new VehicleEntity(model, brand, color, price, condition, userId);
         em.persist(vehicleEntity);
         em.flush();
-
         return vehicleEntity;
     }
+
 
     public VehicleEntity registerVehicle(VehicleEntity vehicleEntity) {
         em.persist(vehicleEntity);
         em.flush();
-
         return vehicleEntity;
     }
 }

@@ -29,7 +29,6 @@ public class LoginBean {
         if (user.getPassword().equals(password)) {
             HttpSession session = SessionUtils.getSession();
             SessionUtils.setUserId(String.valueOf(user.getId()));
-
             return "redirect";
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username and Password", "Please enter correct username and Password "));
@@ -44,6 +43,8 @@ public class LoginBean {
         return "redirect";
     }
 
+
+
     public String login() {
         return "logout";
     }
@@ -51,8 +52,6 @@ public class LoginBean {
     public String logout() {
         return "login";
     }
-
-
 
     public String getUsername() {
         return username;

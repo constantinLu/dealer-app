@@ -35,7 +35,6 @@ public class VehicleServiceImpl implements VehicleServiceInterface {
     public Vehicle registerVehicle(Vehicle vehicleDto) {
         VehicleEntity vehicleEntity = DtoToEntity.convertToEntity(vehicleDto);
         vehicleEntity = vehicleRepositoryInterface.registerVehicle(vehicleEntity);
-
         return EntityToDto.convert(vehicleEntity);
     }
 
