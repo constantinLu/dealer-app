@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="VehicleData">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="Vehicle" type="VehicleGenerated" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="VehicleGenerated">
+        <xs:sequence>
+            <xs:element name="vid" type="xs:int"/>
+            <xs:element name="brand" type="xs:string" minOccurs="0"/>
+            <xs:element name="color" type="ColorGenerated" minOccurs="0"/>
+            <xs:element name="condition" type="ConditionGenerated" minOccurs="0"/>
+            <xs:element name="model" type="xs:string" minOccurs="0"/>
+            <xs:element name="price" type="xs:double"/>
+            <xs:element name="registrationDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="userId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ColorGenerated">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RED"/>
+            <xs:enumeration value="WHITE"/>
+            <xs:enumeration value="GREEN"/>
+            <xs:enumeration value="YELLOW"/>
+            <xs:enumeration value="BLACK"/>
+            <xs:enumeration value="BLUE"/>
+            <xs:enumeration value="ORANGE"/>
+            <xs:enumeration value="PURPLE"/>
+            <xs:enumeration value="TURQUOISE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ConditionGenerated">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEW"/>
+            <xs:enumeration value="USED"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+

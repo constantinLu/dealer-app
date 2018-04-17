@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vehicle>
+    <brand>vw</brand>
+    <color>ORANGE</color>
+    <condition>USED</condition>
+    <model>Golf</model>
+    <price>399.99</price>
+    <registrationDate>2018-04-17T14:42:35.341+03:00</registrationDate>
+    <userId>1</userId>
+    <vid>0</vid>
+</vehicle>
