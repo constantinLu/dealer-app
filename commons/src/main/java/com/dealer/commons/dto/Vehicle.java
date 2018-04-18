@@ -52,7 +52,6 @@ public class Vehicle {
         this.userId = userId;
     }
 
-    @XmlElement
     public int getVid() {
         return vid;
     }
@@ -60,7 +59,6 @@ public class Vehicle {
     public void setVid(int vid) {
         this.vid = vid;
     }
-    @XmlElement
     public String getModel() {
         return model;
     }
@@ -68,7 +66,6 @@ public class Vehicle {
     public void setModel(String model) {
         this.model = model;
     }
-    @XmlElement
     public String getBrand() {
         return brand;
     }
@@ -77,7 +74,6 @@ public class Vehicle {
         this.brand = brand;
     }
 
-    @XmlElement
     public double getPrice() {
         return price;
     }
@@ -101,7 +97,6 @@ public class Vehicle {
     public void setCondition(Condition condition) {
         this.condition = condition;
     }
-    @XmlElement
     public Date getRegistrationDate() {
         return registrationDate;
     }

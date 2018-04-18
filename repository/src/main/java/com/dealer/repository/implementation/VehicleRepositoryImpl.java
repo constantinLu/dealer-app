@@ -10,6 +10,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import java.util.Iterator;
+import java.util.List;
+
 @Stateless
 public class VehicleRepositoryImpl implements VehicleRepositoryInterface {
 
@@ -29,5 +32,15 @@ public class VehicleRepositoryImpl implements VehicleRepositoryInterface {
         em.flush();
         return vehicleEntity;
     }
+
+    public void importVehicles(List<VehicleEntity> vehicleEntityList) {
+        Iterator<VehicleEntity> iterator = vehicleEntityList.iterator();
+        while (iterator.hasNext()) {
+            em.persist(iterator.next());
+            em.flush();
+        }
+    }
+
+
 }
 

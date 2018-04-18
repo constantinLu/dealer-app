@@ -17,12 +17,18 @@
             <h:commandLink action="#{loginBean.logout}" value="Logout"></h:commandLink>
             <br/><br/>
             <h:commandLink action="#{vehicleBean.addVehicle}" value="Register Car"></h:commandLink>
+            <br/><br/>
+            <p:commandButton value="IMPORT" ajax="false" actionListener="#{vehicleBean.addVehiclesFromGeneratedObj}" />
+            <!--<br/><br/>-->
 
-            <p:growl id="messages" showDetail="true"/>
+            <!--<p:growl id="messages" showDetail="true"/>-->
 
-            <p:fileUpload value="#{uploadBean.file}" mode="simple" skinSimple="true"/>
+            <!--<p:fileUpload value="#{vehicleBean.file}" mode="simple" skinSimple="true"/>-->
 
-            <p:commandButton value="Submit" ajax="false" actionListener="#{uploadBean.upload}" disabled="true"/>
+            <!--<p:commandButton value="Submit" ajax="false" actionListener="#{vehicleBean.addVehiclesFromGeneratedObj}"/>-->
+            <h:inputFile id="vehicleBean" value="#{uploadBean.upload}">
+            </h:inputFile>
+
         </p:panel>
     </h:form>
 

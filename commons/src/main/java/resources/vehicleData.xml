@@ -2,7 +2,7 @@
 
 <VehicleData>
 
-  <Vehicle>
+  <Vehicles>
     <vid>0</vid>
     <brand>Volkswagen</brand>
     <color>ORANGE</color>
@@ -10,9 +10,9 @@
     <model>Golf</model>
     <price>399.99</price>
     <registrationDate>2018-04-17T14:42:35.341+03:00</registrationDate>
-  </Vehicle>
+  </Vehicles>
 
-  <Vehicle>
+  <Vehicles>
     <vid>1</vid>
     <brand>Seat</brand>
     <color>ORANGE</color>
@@ -20,9 +20,9 @@
     <model>Leon</model>
     <price>1399.99</price>
     <registrationDate>2018-04-17T14:42:35.341+03:00</registrationDate>
-  </Vehicle>
+  </Vehicles>
 
-  <Vehicle>
+  <Vehicles>
     <vid>2</vid>
     <brand>Mercedes</brand>
     <color>BLACK</color>
@@ -30,9 +30,9 @@
     <model>SClass</model>
     <price>39999.99</price>
     <registrationDate>2018-04-17T14:42:35.341+03:00</registrationDate>
-  </Vehicle>
+  </Vehicles>
 
-  <Vehicle>
+  <Vehicles>
     <vid>3</vid>
     <brand>Nissan</brand>
     <color>RED</color>
@@ -40,7 +40,7 @@
     <model>GTR</model>
     <price>65000.99</price>
     <registrationDate>2018-04-17T14:42:35.341+03:00</registrationDate>
-  </Vehicle>
+  </Vehicles>
 
 </VehicleData>
 

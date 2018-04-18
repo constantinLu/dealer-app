@@ -8,7 +8,6 @@ import com.dealer.repository.entities.VehicleEntity;
 
 public class DtoToEntity {
 
-    // set id also
     public static UserEntity convertToEntity(User user) {
         return new UserEntity(user.getUsername(), user.getPassword());
     }
