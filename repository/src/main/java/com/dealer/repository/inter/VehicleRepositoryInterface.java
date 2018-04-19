@@ -18,6 +18,8 @@ public interface VehicleRepositoryInterface {
 
     void importVehicles(List<VehicleEntity> vehicleEntityList);
 
+    List<VehicleEntity> getVehicleList();
+
 
 
 

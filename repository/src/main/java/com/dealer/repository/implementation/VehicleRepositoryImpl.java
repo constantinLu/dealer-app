@@ -41,6 +41,11 @@ public class VehicleRepositoryImpl implements VehicleRepositoryInterface {
         }
     }
 
+    public List<VehicleEntity> getVehicleList() {
+        List<VehicleEntity> vehicleEntityList = em.createNamedQuery("VehicleEntity.getVehicle", VehicleEntity.class).getResultList();
+        return vehicleEntityList;
+    }
+
 
 }
 

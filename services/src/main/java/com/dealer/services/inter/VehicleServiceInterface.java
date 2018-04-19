@@ -7,19 +7,18 @@ import resources.generated.VehicleData;
 
 import javax.ejb.Local;
 import java.io.File;
+import java.util.List;
 
 @Local
 public interface VehicleServiceInterface {
 
     Vehicle registerVehicle(String model, String brand, Color color, double price, Condition condition, int userId);
 
-
     Vehicle registerVehicle(Vehicle vehicleDto);
 
-//    Vehicle convertImportedVehicles(VehicleGenerated vehicleGenerated);
+    VehicleData unmarshallVehicleData(File file);
 
-    VehicleData unmarshallVehicleData(String str);
-
+    List<Vehicle> geVehicleList();
 
 
 }

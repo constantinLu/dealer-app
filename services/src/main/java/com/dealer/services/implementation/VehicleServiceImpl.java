@@ -48,11 +48,11 @@ public class VehicleServiceImpl implements VehicleServiceInterface {
     }
 
 
-    public VehicleData unmarshallVehicleData(String str) {
+    public VehicleData unmarshallVehicleData(File file) {
 
         VehicleData vehicleData = null;
         try {
-           File file = new File(str);
+           //File file = new File(str);
             //File file = new File("C:\\Users\\constantin.lungu\\IdeaProjects\\DealerApp\\commons\\src\\main\\java\\resources\\vehicleData.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(VehicleData.class);
             javax.xml.bind.Unmarshaller jaxUnmarshaller = jaxbContext.createUnmarshaller();
@@ -66,6 +66,11 @@ public class VehicleServiceImpl implements VehicleServiceInterface {
 
     }
 
+//    private File convertUploadedFile(UploadedFile uploadedFile) {
+//
+//    }
+
+
     //get the list of generatedVehicles and convert it to a list of vehicleEntities
     public void importVehicleData(VehicleData vehicleData) {
         List<VehicleEntity> vehicleEntityList = new ArrayList<VehicleEntity>();
@@ -76,6 +81,13 @@ public class VehicleServiceImpl implements VehicleServiceInterface {
         }
         vehicleRepositoryInterface.importVehicles(vehicleEntityList);
 
+    }
+
+    public List<Vehicle> geVehicleList() {
+        //convert here !
+        List<VehicleEntity> vehicleEntityList = vehicleRepositoryInterface.getVehicleList();
+        List<Vehicle> vehicleDtoList = EntityToDto.convertListEntityToDto(vehicleEntityList);
+        return vehicleDtoList;
     }
 
 }

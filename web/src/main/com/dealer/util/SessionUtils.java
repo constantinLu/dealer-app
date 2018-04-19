@@ -1,10 +1,12 @@
 package main.com.dealer.util;
 
-import main.com.dealer.beans.LoginBean;
+import org.apache.commons.io.FileUtils;
+import org.primefaces.model.UploadedFile;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 
 public class SessionUtils {
@@ -36,6 +38,18 @@ public class SessionUtils {
     public static void setUserId(String userId) {
         HttpSession session = getSession();
         session.setAttribute("userId", userId);
+    }
+
+    public static String convertUploadedFile(UploadedFile uploadedFile) {
+
+        File destFile = new File("out.temp");
+        try {
+            FileUtils.copyInputStreamToFile(uploadedFile.getInputstream(), destFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String path = destFile.getAbsolutePath();
+        return path;
     }
 
 }

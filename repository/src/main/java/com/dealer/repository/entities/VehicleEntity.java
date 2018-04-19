@@ -13,6 +13,9 @@ import java.util.Date;
 
 @Entity
 @Table(name="vehicle")
+@NamedQueries({
+        @NamedQuery(name="VehicleEntity.getVehicle", query = "select v from VehicleEntity v")
+})
 public class VehicleEntity {
 
     @Id

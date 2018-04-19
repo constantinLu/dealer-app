@@ -11,28 +11,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
 </h:head>
 <h:body>
-    <h:form>
-        <p:panel header="WELCOME TO AUTODEALERS">
-            <p>Welcome #{loginBean.username}</p>
+    <h:form style="text-align: center" enctype="multipart/form-data">
+        <p:panel header="WELCOME TO AUTODEALERS" style="align-self: auto">
+            <!--<f:view> Welcome, #{loginBean.username} !</f:view>-->
+            <p></p>
+            <p:commandButton value="SHOW VEHICLES" ajax="false" action="#{vehicleBean.showVehicles}"/>
+            <br/><br/>
+
+
+            <p:growl id="messages" showDetail="true"/>
+            <p:fileUpload value="#{vehicleBean.file}" mode="simple" skinSimple="true"/>
+            <p:commandButton value="Submit" ajax="false" action="#{vehicleBean.upload}" disabled="false"/>
+            <br/><br/>
+
+
+            <h:commandLink action="#{vehicleBean.addVehicle}" value="Register Car&nbsp;&nbsp;"></h:commandLink>
             <h:commandLink action="#{loginBean.logout}" value="Logout"></h:commandLink>
             <br/><br/>
-            <h:commandLink action="#{vehicleBean.addVehicle}" value="Register Car"></h:commandLink>
-            <br/><br/>
-            <p:commandButton value="IMPORT" ajax="false" actionListener="#{vehicleBean.addVehiclesFromGeneratedObj}" />
-            <!--<br/><br/>-->
-
-            <!--<p:growl id="messages" showDetail="true"/>-->
-
-            <!--<p:fileUpload value="#{vehicleBean.file}" mode="simple" skinSimple="true"/>-->
-
-            <!--<p:commandButton value="Submit" ajax="false" actionListener="#{vehicleBean.addVehiclesFromGeneratedObj}"/>-->
-            <h:inputFile id="vehicleBean" value="#{uploadBean.upload}">
-            </h:inputFile>
-
         </p:panel>
     </h:form>
 
 </h:body>
-
 </html>
-

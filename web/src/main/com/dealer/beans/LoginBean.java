@@ -20,7 +20,10 @@ public class LoginBean {
     private String password;
     private User user;
 
+
+
     @EJB
+
     private UserServiceInterface userService;
 
 
@@ -67,5 +70,13 @@ public class LoginBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
