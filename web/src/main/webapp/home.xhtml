@@ -6,30 +6,156 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
 
+
 <h:head>
-    <title>Authendication is successfull!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+    <title>Home Page</title>
 </h:head>
-<h:body>
-    <h:form style="text-align: center" enctype="multipart/form-data">
-        <p:panel header="WELCOME TO AUTODEALERS" style="align-self: auto">
-            <!--<f:view> Welcome, #{loginBean.username} !</f:view>-->
-            <p></p>
-            <p:commandButton value="SHOW VEHICLES" ajax="false" action="#{vehicleBean.showVehicles}"/>
-            <br/><br/>
+<h:body class="backWithPhoto">
+    <h:form style="text-align: left" enctype="multipart/form-data">
+        <div class="form-group center">
+            <p:commandButton value="Logout" update="grid" icon="ui-icon-check" ajax="false"
+                             action="#{loginBean.logout}" validateClient="true" style="text-align:right"/>
+        </div>
+        <style type="text/css">
+            .center {
+                text-align: right;
+
+                background: linear-gradient(to right, grey, turquoise);
+            }
+        </style>
 
 
-            <p:growl id="messages" showDetail="true"/>
-            <p:fileUpload value="#{vehicleBean.file}" mode="simple" skinSimple="true"/>
-            <p:commandButton value="Submit" ajax="false" action="#{vehicleBean.upload}" disabled="false"/>
-            <br/><br/>
+        <p:tabView>
+            <p:tab title="Home" titleStyle="text-align: center">
+                <h3>Welcome, #{loginBean.username}</h3>
+                <h:panelGrid columns="2" cellpadding="10">
+                </h:panelGrid>
+            </p:tab>
 
+            <p:tab title="Register Vehicle">
+                <h:form style="text-align: left">
+                    <p:outputLabel for="model" value="Model:"/>
+                    <p:message for="model"/>
+                    <p:inputText id="model" value="#{vehicleBean.model}"/>
+                    <br/><br/>
 
-            <h:commandLink action="#{vehicleBean.addVehicle}" value="Register Car&nbsp;&nbsp;"></h:commandLink>
-            <h:commandLink action="#{loginBean.logout}" value="Logout"></h:commandLink>
-            <br/><br/>
-        </p:panel>
+                    <p:outputLabel for="brand" value="Brand:"/>
+                    <p:inputText id="brand" value="#{vehicleBean.brand}"/>
+                    <p:message for="brand"/>
+                    <br/><br/>
+
+                    <p:outputLabel for="color" value="Color:"/>
+                    <p:selectOneMenu id="color" value="#{vehicleBean.color}">
+                        <f:selectItems value="#{vehicleBean.colorList}"/>
+                    </p:selectOneMenu>
+                    <br/><br/>
+
+                    <p:outputLabel for="price" value="Price:"/>
+                    <p:inputText id="price" value="#{vehicleBean.price}"/>
+                    <p:message for="price"/>
+                    <br/><br/>
+
+                    <p:outputLabel for="condition" value="Condition:"/>
+                    <p:selectOneMenu id="condition" value="#{vehicleBean.condition}">
+                        <f:selectItems value="#{vehicleBean.conditionList}"/>
+                    </p:selectOneMenu>
+                    <br/><br/>
+
+                    <p:commandButton value="Validate" icon="ui-icon-check" action="#{vehicleBean.registerVehicle}"
+                                     validateClient="true" style="margin-right:10px"/>
+                </h:form>
+            </p:tab>
+
+            <p:tab title="Inventory">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:commandButton value="Show List" update="grid" icon="ui-icon-check" ajax="false"
+                                     action="#{vehicleBean.getVehicles}"
+                                     validateClient="true" style="margin-right:10px"/>
+                    <br/><br/>
+
+                    <p:dataTable rendered="#{vehicleBean.showTable}" var="vehicle" value="#{vehicleBean.vehicleList}"
+                                 rows="10" widgetVar="carsTable"
+                                 style="align-items: left" emptyMessage="No cars found with given criteria"
+                                 filteredValue="#{vehicleBean.filteredList}"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
+
+                        <f:facet name="header">
+                            <p:outputLabel>
+                                <h:outputText value="Search all fields:"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width: 150px"
+                                             placeholder="Enter keyword"/>
+                            </p:outputLabel>
+                        </f:facet>
+
+                        <p:column filterBy="#{vehicle.brand}" headerText="Brand" footerText="contains"
+                                  filterMatchMode="contains">
+                            <h:outputText value="#{vehicle.brand}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{vehicle.model}" headerText="Model" footerText="contains"
+                                  filterMatchMode="contains">
+                            <h:outputText value="#{vehicle.model}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{vehicle.color}" headerText="Color" footerText="in" filterMatchMode="in">
+                            <f:facet name="filter">
+                                <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()"
+                                                      panelStyle="width:150px" scrollHeight="170">
+                                    <f:selectItems value="#{vehicleBean.colorList}"/>
+                                </p:selectCheckboxMenu>
+                            </f:facet>
+                            <h:outputText value="#{vehicle.color}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{vehicle.condition}" headerText="Condition" footerText="exact"
+                                  filterMatchMode="exact">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('carsTable').filter()">
+                                    <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
+                                    <f:selectItems value="#{vehicleBean.conditionList}"/>
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{vehicle.condition}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{vehicle.registrationDate}" headerText="Registration" footerText="contains"
+                                  filterMatchMode="contains">
+                            <h:outputText value="#{vehicle.registrationDate}"/>
+                        </p:column>
+
+                        <p:column headerText="Price" sortBy="#{vehicle.price}">
+                            <h:outputText value="#{vehicle.price}"/>
+                        </p:column>
+
+                        <f:facet name="paginatorBottomRight">
+                            <p:commandButton value="Back" icon="ui-icon-check" action="home" ajax="false"
+                                             style="margin-right:10px"/>
+                        </f:facet>
+                    </p:dataTable>
+                </h:panelGrid>
+            </p:tab>
+
+            <p:tab title="Import">
+                <p:growl id="messages" showDetail="true"/>
+                <p:fileUpload value="#{vehicleBean.file}" mode="simple" skinSimple="true"/>
+                <p:commandButton value="Submit" ajax="false" action="#{vehicleBean.upload}" disabled="false"/>
+                <br/><br/>
+            </p:tab>
+
+            <p:tab title="About">
+                <h3> Employees</h3>
+                <p class="excerpt"> Locations:</p>
+                <p>* Romania</p>
+                <p>* New York</p>
+            </p:tab>
+
+            <p:tab title="Contact">
+                <h3>Send us a message or call </h3>
+                <p>Sales: 0745-255-321</p>
+            </p:tab>
+        </p:tabView>
     </h:form>
-
 </h:body>
 </html>

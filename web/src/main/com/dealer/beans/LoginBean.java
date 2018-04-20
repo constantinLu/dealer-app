@@ -9,12 +9,13 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @ManagedBean(name = "loginBean", eager = true)
-@RequestScoped
+@SessionScoped
 public class LoginBean {
     private String username;
     private String password;
@@ -23,7 +24,6 @@ public class LoginBean {
 
 
     @EJB
-
     private UserServiceInterface userService;
 
 
@@ -32,7 +32,7 @@ public class LoginBean {
         if (user.getPassword().equals(password)) {
             HttpSession session = SessionUtils.getSession();
             SessionUtils.setUserId(String.valueOf(user.getId()));
-            return "redirect";
+            return "home";
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username and Password", "Please enter correct username and Password "));
             return "login";
@@ -43,7 +43,7 @@ public class LoginBean {
         userService.registerUser(username, password);
         HttpSession session = SessionUtils.getSession();
         System.out.println("Registration successfully");
-        return "redirect";
+        return "login";
     }
 
 

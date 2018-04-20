@@ -1,0 +1,55 @@
+
+h3 {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: medium;
+}
+
+
+div.form {
+    display: block;
+    text-align: center;
+    margin-top: 10%;
+
+}
+
+form {
+    width: 360px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    border: none 0;
+}
+
+.backColor {
+    background-color: #74B0B8;
+}
+
+.backWithPhoto {
+    background-image: url("http://www.tzwqcc.com/wp-content/uploads/2017/07/Best-Dfw-Audi-86-with-Car-Remodel-with-Dfw-Audi.jpg");
+}
+
+.alignLabels {
+    text-align: justify-all;
+    color: black;
+}
+
+.logo {
+    display: block;
+    position: relative;
+    width: 15%;
+    margin: 0 auto;
+}
+
+.buttons {
+    margin: 5px;
+    font-size: 20px;
+    padding: 32px 16px 20px;
+    background: red;
+
+}
+

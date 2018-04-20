@@ -12,6 +12,7 @@ import main.com.dealer.util.SessionUtils;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.File;
@@ -32,8 +33,15 @@ public class VehicleBean {
     private int userId;
     private Vehicle vehicle;
 
+    private boolean showTable = false;
+
     private List<Vehicle> vehicleList;
     private List<Vehicle> filteredList;
+
+    @ManagedProperty(value = "#{loginBean}")
+    private LoginBean loginBean;
+
+
 
 
     //get the enums to the page
@@ -57,14 +65,10 @@ public class VehicleBean {
         return "home";
     }
 
-    public String showVehicles() {
+    public void getVehicles() {
         vehicleList = new ArrayList<>();
         vehicleList = vehicleService.geVehicleList();
-        for (Vehicle v : vehicleList) {
-            System.out.println(v + "\n");
-        }
-        return "carList";
-
+        showTable = true;
     }
 
     public void upload() {
@@ -77,22 +81,25 @@ public class VehicleBean {
         }
     }
 
-    //UTIL METHOD
-//    private boolean filterByPrice(Object value, Object filter, Locale locale) {
-//        String filterText = (filter == null) ? null : filter.toString().trim();
-//        if (filterText == null || filterText.equals("")) {
-//            return true;
-//        }
-//        if (value == null) {
-//            return false;
-//        }
-//        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
-//    }
-
-
     //FORWARD to vehicleRegistrationPage
     public String addVehicle() {
         return "vehicleRegistration";
+    }
+
+    public boolean isShowTable() {
+        return showTable;
+    }
+
+    public void setShowTable(boolean showTable) {
+        this.showTable = showTable;
+    }
+
+    public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
     }
 
     public void setVehicleList(List<Vehicle> vehicleList) {
